@@ -1,7 +1,16 @@
 #include <stdio.h>
 
+int power(int base, int exp) {
+    int result = 1;
+    for (int i = 0; i < exp; i++) {
+        result *= base;
+    }
+    return result;
+}
+
 int main() {
-    int num, originalNum, remainder, n = 0, result = 0;
+    int num, originalNum, remainder, n = 0;
+    int result = 0;
 
     printf("Enter an integer: ");
     scanf("%d", &num);
@@ -17,10 +26,7 @@ int main() {
 
     while (originalNum != 0) {
         remainder = originalNum % 10;
-        result += 1;
-        for (int i = 1; i < n; i++) {
-            result *= remainder;
-        }
+        result += power(remainder, n);
         originalNum /= 10;
     }
 
